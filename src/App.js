@@ -5,6 +5,9 @@ import ClassComponent from './Components/ClassComponent.js'
 import HomeComponent from './Components/BaiTapComponent/HomeComponent.js';
 import DataBinding from './DataBinding/DataBinding.js';
 import HandleEvent from './HandleEvent/HandleEvent.js';
+import StyleComponent from './StyleComponent/StyleComponent';
+import StateDemo from './StateDemo/StateDemo';
+import ChangeFontSize from './StateDemo/ChangeFontSize';
 
 //App là component chính của dự án
 //các component khác sẽ được thêm thông qua App
@@ -18,12 +21,15 @@ function App() {
       <FunctionComponent></FunctionComponent>
       <ClassComponent/> */}
       {/* <HomeComponent/> */}
-
       {/* <DataBinding/> */}
+      {/* <HandleEvent/> */}
 
-      <HandleEvent/>
+      {/* <StyleComponent/>
+      <p>Ahhihihi</p>
+      <h1 className='styleText'>Demo style Component App</h1> */}
 
-
+      <StateDemo/>
+      <ChangeFontSize/>
     </div>
   );
 }

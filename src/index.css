@@ -17,3 +17,10 @@
     background-color: rgb(23, 23, 94);
     color: white;
 }
+
+/* Demo style component */
+/* CSS trong index.css se dung chung cho tat ca component */
+p{
+    color: hotpink;
+    font-weight: 700;
+}
