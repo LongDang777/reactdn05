@@ -8,6 +8,8 @@ import HandleEvent from './HandleEvent/HandleEvent.js';
 import StyleComponent from './StyleComponent/StyleComponent';
 import StateDemo from './StateDemo/StateDemo';
 import ChangeFontSize from './StateDemo/ChangeFontSize';
+import DemoCar from './StateDemo/DemoCar/DemoCar';
+import HomePage from './Props/HomePage';
 
 //App là component chính của dự án
 //các component khác sẽ được thêm thông qua App
@@ -28,8 +30,14 @@ function App() {
       <p>Ahhihihi</p>
       <h1 className='styleText'>Demo style Component App</h1> */}
 
-      <StateDemo/>
-      <ChangeFontSize/>
+      {/* <StateDemo/>
+      <ChangeFontSize/> */}
+
+      {/* <DemoCar/> */}
+
+      <HomePage/>
+
+
     </div>
   );
 }
