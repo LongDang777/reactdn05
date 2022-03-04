@@ -5,6 +5,7 @@ export default class Products extends Component {
     render() {
         console.log(this.props.productItem);
         let {productItem} = this.props;
+        // this.props.productItem.img
         return (
             <div className="card">
                 <img src={productItem.img} className="card-img-top" alt="..." />

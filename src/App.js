@@ -10,6 +10,10 @@ import StateDemo from './StateDemo/StateDemo';
 import ChangeFontSize from './StateDemo/ChangeFontSize';
 import DemoCar from './StateDemo/DemoCar/DemoCar';
 import HomePage from './Props/HomePage';
+import RenderWithMap from './RenderWithMap/RenderWithMap';
+import ShoesStore from './Props/ShoesStore/ShoesStore';
+import BTXemChiTiet from './Props/BTXemChiTiet/BTXemChiTiet';
+import ExerciseCarStore from './Props/ExerciseCarStore/ExerciseCarStore';
 
 //App là component chính của dự án
 //các component khác sẽ được thêm thông qua App
@@ -35,8 +39,14 @@ function App() {
 
       {/* <DemoCar/> */}
 
-      <HomePage/>
+      {/* <HomePage/> */}
 
+      {/* <RenderWithMap/> */}
+
+      {/* <ShoesStore/> */}
+      {/* <BTXemChiTiet/> */}
+
+      <ExerciseCarStore/>
 
     </div>
   );
