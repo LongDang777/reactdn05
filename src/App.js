@@ -15,6 +15,7 @@ import ShoesStore from './Props/ShoesStore/ShoesStore';
 import BTXemChiTiet from './Props/BTXemChiTiet/BTXemChiTiet';
 import ExerciseCarStore from './Props/ExerciseCarStore/ExerciseCarStore';
 import BTGioHang from './Props/BTGioHang/BTGioHang';
+import BTGioHangRedux from './Redux/BTGioHang/BTGioHangRedux';
 
 //App là component chính của dự án
 //các component khác sẽ được thêm thông qua App
@@ -49,7 +50,9 @@ function App() {
 
       {/* <ExerciseCarStore/> */}
 
-      <BTGioHang/>
+      {/* <BTGioHang/> */}
+
+     <BTGioHangRedux/>
 
     </div>
   );

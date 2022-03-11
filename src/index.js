@@ -2,16 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-// import reportWebVitals from './reportWebVitals';
-{/* <React.StrictMode>
-    <App />
-  </React.StrictMode> */}
-//   <div>
-//   hello dn05
-// </div>
+
+//Cài đặt store redux
+import { store } from './Redux/RootReducer/configStore';
+//Kết nối store redux với react component
+import { Provider } from 'react-redux';
+
 ReactDOM.render(
-  <App />
- ,
+  <Provider store={store}>
+    <App />
+  </Provider>
+
+  ,
   document.getElementById('root')
 );
 
