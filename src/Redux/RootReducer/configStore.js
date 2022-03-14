@@ -3,6 +3,8 @@ import { combineReducers,createStore } from "redux";
 // B1: gán giá trị mặc định cho state/reducer
 // let gioHang = []
 import {gioHangReducer} from './gioHangReducer';
+import {gameTaiXiuReducer} from './gameTaiXiuReducer';
+
 
 const rootReducer = combineReducers({
     //chứa các state
@@ -10,12 +12,16 @@ const rootReducer = combineReducers({
     
     // gioHangReducer:gioHangReducer
     // object literal
-    gioHangReducer
-
+    gioHangReducer,
+    // gameTaiXiuReducer: gameTaiXiuReducer
+    gameTaiXiuReducer
     //  xemChiTietReducer:(state: chiTiet)=>{
     //  }
 
 
 });
 
-export const store = createStore(rootReducer);
+export const store = createStore(
+    rootReducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);

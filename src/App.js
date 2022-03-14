@@ -16,12 +16,13 @@ import BTXemChiTiet from './Props/BTXemChiTiet/BTXemChiTiet';
 import ExerciseCarStore from './Props/ExerciseCarStore/ExerciseCarStore';
 import BTGioHang from './Props/BTGioHang/BTGioHang';
 import BTGioHangRedux from './Redux/BTGioHang/BTGioHangRedux';
+import GameTaiXiu from './Redux/GameTaiXiu/GameTaiXiu';
 
 //App là component chính của dự án
 //các component khác sẽ được thêm thông qua App
 function App() {
   return (
-    <div className="App container">
+    <div className="App">
       {/* hello dn05
       <FunctionComponent/>
       <FunctionComponent/>
@@ -52,7 +53,9 @@ function App() {
 
       {/* <BTGioHang/> */}
 
-     <BTGioHangRedux/>
+     {/* <BTGioHangRedux/> */}
+
+     <GameTaiXiu/>
 
     </div>
   );
