@@ -4,7 +4,7 @@ import { combineReducers,createStore } from "redux";
 // let gioHang = []
 import {gioHangReducer} from './gioHangReducer';
 import {gameTaiXiuReducer} from './gameTaiXiuReducer';
-
+import {quanLyNDReducer} from './QLNDReducer'
 
 const rootReducer = combineReducers({
     //chứa các state
@@ -14,9 +14,9 @@ const rootReducer = combineReducers({
     // object literal
     gioHangReducer,
     // gameTaiXiuReducer: gameTaiXiuReducer
-    gameTaiXiuReducer
-    //  xemChiTietReducer:(state: chiTiet)=>{
-    //  }
+    gameTaiXiuReducer,
+    quanLyNDReducer
+
 
 
 });
