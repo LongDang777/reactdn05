@@ -18,6 +18,7 @@ import BTGioHang from './Props/BTGioHang/BTGioHang';
 import BTGioHangRedux from './Redux/BTGioHang/BTGioHangRedux';
 import GameTaiXiu from './Redux/GameTaiXiu/GameTaiXiu';
 import BTQLND from './Redux/BTQLND/BTQLND';
+import LifecycleParent from './Lifecycle/LifecycleParent';
 
 //App là component chính của dự án
 //các component khác sẽ được thêm thông qua App
@@ -58,7 +59,9 @@ function App() {
 
      {/* <GameTaiXiu/> */}
 
-     <BTQLND/>
+     {/* <BTQLND/> */}
+     
+     <LifecycleParent/>
 
     </div>
   );

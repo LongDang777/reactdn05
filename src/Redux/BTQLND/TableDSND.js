@@ -17,8 +17,21 @@ class TableDSND extends Component {
         <td>{nd.email}</td>
         <td>{nd.loaiND}</td>
         <td>
-          <button className='btn btn-danger'> Xóa</button>
-          <button className='btn btn-info'>Xem</button>
+          <button className='btn btn-danger' onClick={() => { 
+              let action ={
+                type:'XOA_NGUOI_DUNG',
+                taiKhoanXoa:nd.taiKhoan
+              }
+
+              this.props.dispatch(action)
+           }} > Xóa</button>
+          <button className='btn btn-info' onClick={() => { 
+              let action ={
+                type:'XEM_THONG_TIN',
+                thongTinND: nd
+              }
+              this.props.dispatch(action);
+           }} >Xem</button>
         </td>
       </tr>
     })

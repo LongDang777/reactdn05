@@ -31,7 +31,8 @@ class FormDangKy extends Component {
         // console.log(event.target);
         //event.target.value, event.target.name
         let {value, name} = event.target;
-        let newValues = {...this.state.values};
+        // let newValues = {...this.state.values};
+        let newValues = {...this.props.nguoiDung.values};
         //? goi thuoc tinh C1
         // newValues.taiKhoan = valueTK;
         //? C2
@@ -39,7 +40,8 @@ class FormDangKy extends Component {
         // object literal
         newValues[name] = value;
 
-        let newError = {...this.state.errors};
+        // let newError = {...this.state.errors};
+        let newError = {...this.props.nguoiDung.errors};
         let message = "";
         //kiểm tra rỗng
         if(value.trim() === ""){
@@ -58,10 +60,10 @@ class FormDangKy extends Component {
             }
         }
         newError[name] = message;
-        this.setState({
-            values:newValues,
-            errors:newError
-        });
+        // this.setState({
+        //     values:newValues,
+        //     errors:newError
+        // });
         // object literal
         // let newState ={
         //     [name]: value
@@ -72,6 +74,15 @@ class FormDangKy extends Component {
         //     //     console.log(this.state);
         //     //  }
         // );
+    
+        let action={
+            type:'HANDLE_INPUT',
+            nguoiDung: {
+                values:newValues,
+                errors:newError
+            }
+        }
+        this.props.dispatch(action);
     }
 
     handleSubmit = (event) => { 
@@ -83,9 +94,9 @@ class FormDangKy extends Component {
         let isValid = true;
 
         // duyệt từng thuộc tính của obj
-        for(let key in this.state.errors){
+        for(let key in this.props.nguoiDung.errors){
             // obj literal
-            if(this.state.errors[key] !==""){
+            if(this.props.nguoiDung.errors[key] !==""){
                 isValid = false;
                 // dừng vòng lăp
                 break;
@@ -100,14 +111,18 @@ class FormDangKy extends Component {
         //đẩy state lên store
         let action={
             type:"THEM_NGUOI_DUNG",
-            nguoiDung: this.state.values
+            nguoiDung: this.props.nguoiDung.values
         }
         this.props.dispatch(action);
 
      }
 
     render() {
-        let {taiKhoan,hoTen,matKhau,sdt,email,loaiND} = this.state.errors
+        // let {taiKhoan,hoTen,matKhau,sdt,email,loaiND} = this.state.errors
+        let {taiKhoan,hoTen,matKhau,sdt,email,loaiND} = this.props.nguoiDung.errors
+        // let {thongTinND} =this.props
+        let {values} =this.props.nguoiDung
+        // console.log(this.props.thongTinND);
         return (
             <div className="card mt-5">
                 <form onSubmit={this.handleSubmit} >
@@ -121,36 +136,36 @@ class FormDangKy extends Component {
                                 {/* <input onChange={(event) => { 
                                     console.log(event.target);
                                  }} /> */}
-                                <input onChange={this.handleInput} type="text" name="taiKhoan" className="form-control" />
+                                <input onChange={this.handleInput} type="text" name="taiKhoan" className="form-control" value={values.taiKhoan} />
                                 <p className='text-danger'>{taiKhoan}</p>
                             </div>
                             <div className="form-group col-md-6">
                                 <label>Họ Tên</label>
-                                <input onChange={this.handleInput} type="text" name="hoTen" className="form-control" />
+                                <input onChange={this.handleInput} type="text" name="hoTen" className="form-control" value={values.hoTen}  />
                                 <p className='text-danger'>{hoTen}</p>
                             </div>
                         </div>
                         <div className="form-row">
                             <div className="form-group col-md-6">
                                 <label>Mật Khẩu</label>
-                                <input onChange={this.handleInput} type="password" name="matKhau" className="form-control" />
+                                <input onChange={this.handleInput} type="password" name="matKhau" className="form-control" value={values.matKhau} />
                                 <p className='text-danger'>{matKhau}</p>
                             </div>
                             <div className="form-group col-md-6">
                                 <label>Số điện thoại</label>
-                                <input onChange={this.handleInput} type="text" name="sdt" className="form-control" />
+                                <input onChange={this.handleInput} type="text" name="sdt" className="form-control" value={values.sdt} />
                                 <p className='text-danger'>{sdt}</p>
                             </div>
                         </div>
                         <div className="form-row">
                             <div className="form-group col-md-6">
                                 <label>Email</label>
-                                <input data-type="email"  onChange={this.handleInput} type="email" name="email" className="form-control" />
+                                <input data-type="email"  onChange={this.handleInput} type="email" name="email" className="form-control" value={values.email} />
                                 <p className='text-danger'>{email}</p>
                             </div>
                             <div className="form-group col-md-6">
                                 <label>Mã loại người dùng</label>
-                                <select onChange={this.handleInput} name='loaiND' className="form-control">
+                                <select onChange={this.handleInput} name='loaiND' className="form-control" value={values.loaiND} >
                                     {/* <option>Hãy chọn loại</option> */}
                                     <option value='khachHang'>Khách Hàng</option>
                                     <option value='nhanVien' >Nhân Viên</option>
@@ -162,7 +177,13 @@ class FormDangKy extends Component {
                     </div>
                     <div className="card-footer bg-dark">
                         <button className='btn btn-success'>Đăng Ký</button>
-                        <button className='btn btn-primary'>Cập Nhật</button>
+                        <button className='btn btn-primary' type="button" onClick={() => { 
+                            let action={
+                                type:'CAP_NHAT',
+                                thongTinCN:this.props.nguoiDung.values
+                            }
+                            this.props.dispatch(action);
+                         }} >Cập Nhật</button>
                     </div>
                 </form>
             </div >
@@ -171,5 +192,11 @@ class FormDangKy extends Component {
     }
 }
 
-
-export default connect()(FormDangKy);
+const mapStateToProps = (rootReducer) => {
+    return{
+        thongTinND: rootReducer.quanLyNDReducer.thongTinNguoiDung,
+        
+        nguoiDung:rootReducer.quanLyNDReducer.nguoiDung
+    }
+}
+export default connect(mapStateToProps)(FormDangKy);
