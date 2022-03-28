@@ -51,9 +51,9 @@ export const quanLyNDReducer = (state = qlnd, action) => {
 
             return { ...state }
         case 'XEM_THONG_TIN':
-            // state.thongTinNguoiDung = action.thongTinND
-            state.nguoiDung.values = action.thongTinND;
-            state.nguoiDung = { ...state.nguoiDung }
+            state.thongTinNguoiDung = action.thongTinND
+            // state.nguoiDung.values = action.thongTinND;
+            // state.nguoiDung = { ...state.nguoiDung }
             return { ...state }
         case 'HANDLE_INPUT':
             //!B1: Thử gán trực tiếp giá trị vào các mảng hoặc object

@@ -23,16 +23,25 @@ class FormDangKy extends Component {
         }
     }
 
-   
+    // onChange: giá trị của control của form thay đổi thì gọi ngay onChange
     handleInput = (event) => {
-       
+        // debugger;
+        // sự kiện mặc định của thẻ html
+        //event.target => thẻ đang được tác động
+        // console.log(event.target);
+        //event.target.value, event.target.name
         let {value, name} = event.target;
-
-        let newValues = {...this.state.values};
-  
+        // let newValues = {...this.state.values};
+        let newValues = {...this.props.nguoiDung.values};
+        //? goi thuoc tinh C1
+        // newValues.taiKhoan = valueTK;
+        //? C2
+        // newValues[taiKhoan] = valueTK;
+        // object literal
         newValues[name] = value;
 
-        let newError = {...this.state.errors};
+        // let newError = {...this.state.errors};
+        let newError = {...this.props.nguoiDung.errors};
         let message = "";
         //kiểm tra rỗng
         if(value.trim() === ""){
@@ -51,22 +60,29 @@ class FormDangKy extends Component {
             }
         }
         newError[name] = message;
-        this.setState({
-            values:newValues,
-            errors:newError
-        });
-      
-    
-        // let action={
-        //     type:'HANDLE_INPUT',
-        //     nguoiDung: {
-        //         values:newValues,
-        //         errors:newError
-        //     }
+        // this.setState({
+        //     values:newValues,
+        //     errors:newError
+        // });
+        // object literal
+        // let newState ={
+        //     [name]: value
         // }
-        // this.props.dispatch(action);
-
-
+        // xét giá trị mới cho state, chạy lại hàm render()
+        // this.setState(newState,
+        //     // () => { 
+        //     //     console.log(this.state);
+        //     //  }
+        // );
+    
+        let action={
+            type:'HANDLE_INPUT',
+            nguoiDung: {
+                values:newValues,
+                errors:newError
+            }
+        }
+        this.props.dispatch(action);
     }
 
     handleSubmit = (event) => { 
@@ -101,49 +117,12 @@ class FormDangKy extends Component {
 
      }
 
-
-
-    //  static getDerivedStateFromProps(newProps, currentState){
-
-    //     // suy nghĩ kỹ setState() ở getDerivedStateFromProps => có đổi state nhưng lại render lại UI => chạy lifecycle
-
-    //     //newProps: thongTinNguoiDung từ reducer thông qua mapStateToProps (thongTinND)
-
-    //     //currentState: là state hiện tại của component
-
-    //     //Giup xem duoc thông tin mới ở trên form
-        
-    //     if(currentState.values.taiKhoan !== newProps.thongTinND.taiKhoan){
-    //         //trả về state mới
-    //         return {
-    //             ...currentState,
-    //             values: newProps.thongTinND
-    //         }
-    //     }
-    //     // trả về giá trị hiện tại của state
-    //     return currentState;
-    //  }
-
-    componentWillReceiveProps(newProps){
-        this.setState({
-            values:newProps.thongTinND
-        });
-    }
-
-
     render() {
-        let {taiKhoan,hoTen,matKhau,sdt,email,loaiND} = this.state.errors
-        // let values = this.props.thongTinND;
-        let values =  this.state.values;
-
-
-
-        // let {taiKhoan,hoTen,matKhau,sdt,email,loaiND} = this.props.nguoiDung.errors
+        // let {taiKhoan,hoTen,matKhau,sdt,email,loaiND} = this.state.errors
+        let {taiKhoan,hoTen,matKhau,sdt,email,loaiND} = this.props.nguoiDung.errors
         // let {thongTinND} =this.props
-        // let {values} =this.props.nguoiDung
+        let {values} =this.props.nguoiDung
         // console.log(this.props.thongTinND);
-
-
         return (
             <div className="card mt-5">
                 <form onSubmit={this.handleSubmit} >

@@ -59,9 +59,9 @@ function App() {
 
      {/* <GameTaiXiu/> */}
 
-     {/* <BTQLND/> */}
+     <BTQLND/>
      
-     <LifecycleParent/>
+     {/* <LifecycleParent/> */}
 
     </div>
   );
